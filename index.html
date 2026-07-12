@@ -134,6 +134,15 @@
   .canvas-holder{position:relative;}
   .countdown-overlay{display:none;position:absolute;inset:0;align-items:center;justify-content:center;background:rgba(11,14,20,.72);border-radius:10px;}
   #countdownNum{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:110px;line-height:1;background:linear-gradient(90deg,var(--bass),var(--low),var(--mid),var(--treble));-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+  .support-widget{position:fixed;bottom:16px;left:16px;z-index:100;transition:all .25s;}
+  .support-toggle{width:36px;height:36px;border-radius:50%;background:var(--bg-raised);border:1px solid var(--line);color:var(--text-dim);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+  .support-toggle:hover{border-color:var(--mid);color:var(--text);}
+  .support-panel{display:none;background:var(--bg-raised);border:1px solid var(--line);border-radius:10px;padding:16px;width:180px;margin-bottom:8px;}
+  .support-panel.show{display:block;}
+  .support-panel .sp-title{font-family:'Rajdhani',sans-serif;font-weight:600;font-size:13px;color:var(--text-dim);margin-bottom:8px;text-align:center;}
+  .support-panel img{display:block;width:120px;height:120px;margin:0 auto 8px;border-radius:6px;background:#fff;padding:4px;}
+  .support-panel .sp-hint{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);text-align:center;line-height:1.4;}
 </style>
 </head>
 <body>
@@ -820,6 +829,19 @@
 
   syncSettingsUI();
 })();
+</script>
+<div class="support-widget">
+  <div class="support-panel" id="supportPanel">
+    <div class="sp-title">Support me</div>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=paypal%3A%2F%2Fuheracek3050%40gmail.com" alt="PayPal QR">
+    <div class="sp-hint">Scan with your<br>PayPal app to send a tip</div>
+  </div>
+  <button class="support-toggle" id="supportToggle">&#9825;</button>
+</div>
+<script>
+document.getElementById('supportToggle').addEventListener('click',()=>{
+  document.getElementById('supportPanel').classList.toggle('show');
+});
 </script>
 </body>
 </html>
